@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Veridia - Archives PNJ</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .ara-admin-header {
+            background-color: #0d1117;
+            border: 2px dashed #ff7b72;
+            padding: 15px;
+            margin-bottom: 30px;
+            font-family: monospace;
+            color: #ff7b72;
+        }
+
+        .pnj-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .pnj-card {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            display: flex;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .pnj-card:hover {
+            border-color: #58a6ff;
+            box-shadow: 0 0 15px rgba(88, 166, 255, 0.1);
+        }
+
+        .pnj-image-box {
+            width: 220px;
+            min-width: 220px;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            background-color: #0d1117;
+            border-right: 1px solid #30363d;
+            transition: all 0.4s ease;
+        }
+
+        .pnj-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .img-secret {
+            opacity: 0;
+        }
+
+        .pnj-info-box {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-family: monospace;
+        }
+
+        .pnj-header-info h2 {
+            margin: 0 0 10px 0;
+            color: #ffffff;
+            font-size: 1.5rem;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 5px;
+        }
+
+        .classification-badge {
+            display: inline-block;
+            font-size: 0.8rem;
+            padding: 3px 8px;
+            border-radius: 3px;
+            background: #21262d;
+            color: #8b949e;
+            margin-bottom: 15px;
+            border: 1px solid #30363d;
+        }
+
+        .info-row {
+            margin: 6px 0;
+            color: #c9d1d9;
+        }
+
+        .info-row strong {
+            color: #58a6ff;
+        }
+
+        .pnj-details-extended {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1), opacity 0.3s ease;
+        }
+
+        .section-divider {
+            color: #ff7b72;
+            margin: 20px 0 10px 0;
+            border-bottom: 1px dashed #ff7b72;
+            padding-bottom: 3px;
+            font-weight: bold;
+        }
+
+        .pnj-card.expanded {
+            border-color: #ff7b72;
+            background-color: #1a1616;
+        }
+
+        .pnj-card.expanded .img-public {
+            opacity: 0;
+        }
+        .pnj-card.expanded .img-secret {
+            opacity: 1;
+        }
+
+        .pnj-card.expanded .pnj-details-extended {
+            max-height: 2000px;
+            opacity: 1;
+            margin-top: 15px;
+        }
+
+        .pnj-card.expanded .classification-badge {
+            background-color: #f85149;
+            color: #fff;
+            border-color: #f85149;
+        }
+
+        .click-prompt {
+            font-size: 0.75rem;
+            color: #8b949e;
+            text-align: right;
+            margin-top: 15px;
+            border-top: 1px solid #30363d;
+            padding-top: 10px;
+        }
+
+        .pnj-card.expanded .click-prompt {
+            color: #ff7b72;
+            border-top-color: #ff7b72;
+        }
+
+        /* --- RESPONSIVE MOBILE --- */
+        @media (max-width: 768px) {
+            .pnj-card {
+                flex-direction: column;
+            }
+            .pnj-image-box {
+                width: 100%;
+                height: 250px;
+                border-right: none;
+                border-bottom: 1px solid #30363d;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Projet Veridia</h1>
+        <p>Base de Données Centrale de l'A.R.A.</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="univers.html">L'Univers</a>
+        <a href="factions.html">Les Factions</a>
+        <a href="guide.html">Créer un Dossier</a>
+        <a href="pnj.html" class="active">Archives PNJ</a>
+    </nav>
+
+    <div class="container">
+        <main>
+            <section>
+                <div class="ara-admin-header">
+                    <strong>A.R.A. — DOSSIER SOCIOLOGIQUE & REGISTRE PNJ</strong><br>
+                    ACCÈS DES PROTOCOLES INDIVIDUELS — CLIQUEZ SUR UNE FICHE POUR RECHERCHER LES DONNÉES DE NIVEAU INFÉRIEUR.
+                </div>
+
+                <div class="pnj-grid">
+
+                    <div class="pnj-card" onclick="toggleCard(this)">
+                        <div class="pnj-image-box">
+
+                            <img src="Frieda Müller 1.jpeg" alt="Identité Publique" class="pnj-img img-public">
+                            <img src="Frieda Müller 2.jpeg" alt="Identité Réelle" class="pnj-img img-secret">
+                        </div>
+                        <div class="pnj-info-box">
+                            <div>
+                                <div class="classification-badge">CLASSIFICATION : □ Public</div>
+                                <h2>Frieda Müller</h2>
+                                
+                                <div class="section-divider">IDENTITÉ (DONNÉES DE BASE)</div>
+                                <div class="info-row"><strong>Surnom :</strong> "Présidente"</div>
+                                <div class="info-row"><strong>Âge :</strong> 37 ans</div>
+                                <div class="info-row"><strong>Profession :</strong> Présidente de <em>l'A.R.A.</em></div>
+                                <div class="info-row"><strong>Quartier :</strong>District Central</div>
+                                <div class="info-row"><strong>Faction :</strong> A.R.A.</div>
+
+                                <div class="section-divider">DESCRIPTION</div>
+                                <div class="info-row"><strong>Apparence :</strong> Grande femme à la silhouette élégante, toujours vêtue de l'uniforme noir et bleu de l'A.R.A.
+
+Deux longues cornes d'ivoire noirci émergent de son front et se recourbent légèrement vers l'arrière. Elles sont devenues l'un des symboles de Veridia.
+
+Son visage paraît calme, presque bienveillant, mais les profondes cernes qui marquent son regard trahissent un manque chronique de sommeil.</div>
+                                <div class="info-row"><strong>Calme. Patiente. Extrêmement diplomate.
+
+Elara refuse les discours extrémistes. Elle préfère négocier pendant des semaines plutôt que d'envoyer une seule équipe d'intervention.
+
+Elle connaît les horreurs de la Grande Manifestation et estime que chaque vie sauvée vaut davantage qu'une victoire politique.
+
+Cependant, derrière cette douceur se cache une détermination inflexible. Lorsqu'une décision menace la survie de Veridia, elle l'assume sans hésiter... quitte à être détestée.</div>
+                                <div class="info-row"><strong>Citation :</strong> <em>« Je ne cherche pas un monde parfait. Je cherche un monde qui survivra jusqu'à demain. »</em></div>
+                            </div>
+
+                            <div class="pnj-details-extended">
+                                <div class="classification-badge" style="background: #f85149; color: white;">NIVEAU MAJ : ■ Secret</div>
+
+                                <div class="section-divider">STATUT ADMINISTRATIF</div>
+                                <div class="info-row">□ Mondain | □ Éveillé | ■ Spécialiste</div>
+
+                                <div class="section-divider">SPÉCIFICATIONS ANOMALIE</div>
+                                <div class="info-row"><strong>Concept :</strong></div>
+                                <div class="info-row"><strong>Fonction :</strong></div>
+                                <div class="info-row"><strong>Capacités :</strong></div>
+                                <div class="info-row"><strong>Faiblesses :</strong> </div>
+
+                                <div class="section-divider">☣️ RÉSONANCE & ☢️ CORRUPTION</div>
+                                <div class="info-row"><strong>Niveau estimé :</strong> Moyen (Stade II) | <strong>Stabilité :</strong> Précaire</div>
+                                <div class="info-row"><strong>Pourcentage :</strong> 34% | <strong>Niveau :</strong> Phase d'incrustation</div>
+                                <div class="info-row"><strong>Manifestations visibles :</strong>Deux cornes osseuses permanentes.</div>
+
+                                <div class="section-divider">HISTORIQUE CONFIDENTIEL</div>
+                                <p style="margin: 5px 0; color: #8b949e; font-size: 0.9rem;">Avant la Grande Manifestation, Elara Voss dirigeait un service de gestion des catastrophes urbaines.
+
+Le 3 janvier 2026, elle coordonna les secours pendant les premières heures du chaos.
+
+Son mari et sa fille disparurent lors de l'effondrement d'un quartier touché par une distorsion majeure. Aucun corps ne fut retrouvé.
+
+Alors qu'elle organisait une évacuation, Elara connut son propre Éveil.
+
+Au lieu de fuir, elle continua à diriger les opérations pendant près de trente-six heures sans interruption.
+
+Quelques semaines plus tard, elle participa à la fondation de l'A.R.A. et fut élue présidente par les représentants des différentes cellules d'urgence.
+
+Depuis, elle consacre toute son existence à empêcher qu'une tragédie semblable ne se reproduise.
+
+Pour certains, elle est la femme qui maintient Veridia debout.
+
+Pour d'autres, elle est devenue le visage d'un contrôle toujours plus envahissant.</p>
+
+                                <div class="section-divider">RELATIONS ACCRÉDITÉES</div>
+                                <div class="info-row"><strong>Alliés :</strong> Haut commandement de l'A.R.A.
+Plusieurs chercheurs indépendants.
+Certains dirigeants du Consortium.</div>
+                                <div class="info-row"><strong>Ennemis :</strong> Les cellules radicales des Enfants de Gaïa.
+Plusieurs figures du Syndicat.</div>
+                                <div class="info-row"><strong>Contacts :</strong> Journalistes de la VNN.
+Responsables municipaux.
+Directeurs d'hôpitaux.
+Chefs d'équipes d'intervention. </div>
+
+                                <div class="section-divider">RÔLE RP & RESSOURCES</div>
+                                <div class="info-row">■ Donneur de quêtes |■ Figure politique |■ Allié |■ Chercheur |■ Déclencheur d'événements majeurs</div>
+                                <div class="info-row"><strong>Argent :</strong> Budget institutionnel de l'A.R.A.</div>
+                                <div class="info-row"><strong>Influence :</strong> ★★★★★ (Exceptionnelle)</div>
+                                <div class="info-row"><strong>Ééquipement :</strong> Terminal sécurisé de niveau Ω. Badge présidentiel. Accès aux archives intégrales. Escorte d'intervention.</div>
+                                <div class="info-row"><strong>Accès particuliers :</strong>Tous les centres A.R.A. Zones de confinement. Archives classifiées. Autorité pour déclarer l'état d'urgence.</div>
+                            </div>
+
+                            <div class="click-prompt">[ Cliquer pour décrypter le dossier complet ]</div>
+                        </div>
+                    </div>
+
+                    <div class="pnj-card" onclick="toggleCard(this)">
+                        <div class="pnj-image-box">
+                            <img src="https://placehold.co/220x300/21262d/58a6ff?text=Dossier+Vierge" alt="Identité Publique" class="pnj-img img-public">
+                            <img src="https://placehold.co/220x300/211515/ff7b72?text=CLASSIFIED" alt="Identité Réelle" class="pnj-img img-secret">
+                        </div>
+                        <div class="pnj-info-box">
+                            <div>
+                                <div class="classification-badge">CLASSIFICATION : □ Public</div>
+                                <h2>[Nom du PNJ Vierge]</h2>
+                                
+                                <div class="section-divider">IDENTITÉ</div>
+                                <div class="info-row"><strong>Surnom :</strong> ...</div>
+                                <div class="info-row"><strong>Âge :</strong> ... ans</div>
+                                <div class="info-row"><strong>Profession :</strong> ...</div>
+                                <div class="info-row"><strong>Quartier :</strong> ...</div>
+                                <div class="info-row"><strong>Faction :</strong> ...</div>
+
+                                <div class="section-divider">DESCRIPTION</div>
+                                <div class="info-row"><strong>Apparence :</strong> ...</div>
+                                <div class="info-row"><strong>Personnalité :</strong> ...</div>
+                                <div class="info-row"><strong>Citation :</strong> <em>"..."</em></div>
+                            </div>
+
+                            <div class="pnj-details-extended">
+                                <div class="classification-badge" style="background: #ff7b72; color: black; font-weight: bold;">NIVEAU MAJ : □ Confidentiel / □ Secret / □ Omega</div>
+
+                                <div class="section-divider">STATUT</div>
+                                <div class="info-row">□ Mondain | □ Éveillé | □ Spécialiste</div>
+
+                                <div class="section-divider">ANOMALIE (SI ÉVEILLÉ)</div>
+                                <div class="info-row"><strong>Concept :</strong> ...</div>
+                                <div class="info-row"><strong>Fonction :</strong> ...</div>
+                                <div class="info-row"><strong>Capacités :</strong> ...</div>
+                                <div class="info-row"><strong>Faiblesses :</strong> ...</div>
+
+                                <div class="section-divider">☣️ RÉSONANCE & ☢️ CORRUPTION</div>
+                                <div class="info-row"><strong>Niveau estimé :</strong> ... | <strong>Stabilité :</strong> ...</div>
+                                <div class="info-row"><strong>Pourcentage :</strong> ...% | <strong>Niveau :</strong> ...</div>
+                                <div class="info-row"><strong>Manifestations visibles :</strong> ...</div>
+
+                                <div class="section-divider">HISTORIQUE</div>
+                                <p style="margin: 5px 0; color: #8b949e; font-size: 0.9rem;">Insérer le résumé de l'histoire secrète ou le background ici.</p>
+
+                                <div class="section-divider">RELATIONS</div>
+                                <div class="info-row"><strong>Alliés :</strong> ...</div>
+                                <div class="info-row"><strong>Ennemis :</strong> ...</div>
+                                <div class="info-row"><strong>Contacts :</strong> ...</div>
+
+                                <div class="section-divider">RÔLE RP (COCHER CE QUI S'APPLIQUE)</div>
+                                <div class="info-row">□ Donneur de quêtes | □ Commerçant | □ Informateur | □ Figure politique | □ Civil</div>
+
+                                <div class="section-divider">RESSOURCES</div>
+                                <div class="info-row"><strong>Argent :</strong> ... | <strong>Influence :</strong> ...</div>
+                                <div class="info-row"><strong>Équipement :</strong> ...</div>
+                                <div class="info-row"><strong>Accès particuliers :</strong> ...</div>
+                            </div>
+
+                            <div class="click-prompt">[ Cliquer pour décrypter le dossier complet ]</div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer><p>&copy; 2026 Projet Veridia — Système d'indexation centralisé de l'A.R.A.</p></footer>
+
+    <script>
+        function toggleCard(card) {
+            card.classList.toggle('expanded');
+            const prompt = card.querySelector('.click-prompt');
+            if (card.classList.contains('expanded')) {
+                prompt.textContent = "[ VERROUILLER LE DOSSIER DE L'AGENCE ]";
+            } else {
+                prompt.textContent = "[ Cliquer pour décrypter le dossier complet ]";
+            }
+        }
+    </script>
+</body>
+</html>
