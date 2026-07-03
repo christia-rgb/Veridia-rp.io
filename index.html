@@ -5,6 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projet Veridia - Accueil Lore</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .ara-event-accordion {
+            margin-bottom: 30px;
+            border: 2px solid #ff7b72; /* Rouge Alerte */
+            border-radius: 6px;
+            overflow: hidden;
+            background-color: #1a1616; /* Fond sombre teinté de rouge */
+            box-shadow: 0 0 15px rgba(255, 123, 114, 0.15);
+        }
+
+        .ara-event-accordion summary {
+            padding: 18px 20px;
+            font-size: 1.3rem;
+            font-family: monospace;
+            font-weight: bold;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            background-color: #211515;
+            color: #ff7b72;
+            text-shadow: 0 0 5px rgba(255, 123, 114, 0.5);
+        }
+
+        .ara-event-accordion summary:hover {
+            background-color: #311d1d;
+            color: #ffffff;
+        }
+
+        .ara-event-accordion summary::after {
+            content: '🚨 EN COURS';
+            font-size: 0.8rem;
+            background-color: #f85149;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 3px;
+            animation: pulse Alerte 1.5s infinite;
+        }
+
+        @keyframes pulseAlerte {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        .ara-event-content {
+            padding: 25px;
+            line-height: 1.6;
+            color: #c9d1d9;
+        }
+
+        .faction-quotes {
+            background-color: #0d1117;
+            border-left: 3px solid #58a6ff;
+            padding: 12px;
+            margin: 15px 0;
+            font-family: monospace;
+        }
+
+        blockquote {
+            background-color: #0d1117;
+            border-left: 3px solid #ff7b72;
+            padding: 10px 15px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+
+        .vnn-box {
+            border: 1px dashed #f2cc60;
+            background-color: #1c1912;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    </style>
+
 </head>
 <body>
     <header>
@@ -18,6 +96,7 @@
         <a href="factions.html">Les Factions</a>
         <a href="magie.html">Les Anomalies</a>
         <a href="regles.html">Règles du RP</a>
+        <a href="pnj.html">PNJ</a>
     </nav>
 
     <div class="container">
@@ -42,6 +121,41 @@
                 <p>Les Anomalies changent le monde.</p>
                 <p>Ce sont les habitants qui décideront de ce qu'il deviendra.</p>
                 <p><em>Vous regardiez le Veridia News Network. Restez avec nous après la pause pour notre reportage : « Faut-il vraiment s'inquiéter des pigeons luminescents du District Ouest ? Des spécialistes répondent à vos questions. »</em></p>
+
+                 <details class="ara-event-accordion" open>
+                <summary>⚠️ ÉVÉNEMENT RP : LA CRISE DES DÉVIANTS</summary>
+                <div class="ara-event-content">
+                    <h2>A.R.A. — DOSSIER SOCIOLOGIQUE : LA CRISE DE CONFIANCE</h2>
+                    <p><strong>Origine du conflit :</strong> Les premières semaines suivant la Grande Manifestation furent marquées par un phénomène encore mal compris. Certains Éveillés fortement corrompus cessèrent progressivement de répondre aux critères biologiques et psychologiques humains. L'A.R.A. désigne ces individus sous le nom de <strong>Déviants</strong>. La population, elle, utilise un autre terme : <strong>"Monstres"</strong>.</p>
+                    
+                    <div class="vnn-box">
+                        <h4 style="color: #f2cc60; margin: 0 0 10px 0;">VNN — ÉDITION SPÉCIALE</h4>
+                        <p style="font-style: italic; margin: 0 0 10px 0;">« Un Déviant neutralisé hier dans le District Est a été identifié comme un ancien professeur de lycée porté disparu depuis trois semaines. »</p>
+                        <p style="font-style: italic; margin: 0;">« Les autorités rappellent qu'aucun signe extérieur ne permet de prédire avec certitude une Déviation. »</p>
+                    </div>
+
+                    <h3>Les Marques de la Corruption</h3>
+                    <p>La Corruption laisse progressivement des traces visibles (iris lumineux, peau cristallisée, veines luminescentes, corne, plumes). Ces manifestations ne rendent pas un Éveillé dangereux. Elles le rendent identifiable. Et parfois... cela suffit.</p>
+                    
+                    <blockquote>« Je voulais simplement acheter du pain. La boulangère m'a demandé de sortir quand elle a vu mes yeux... »<br>— Témoignage d'une Éveillée de niveau I (VNN)</blockquote>
+
+                    <h3>Positions des Factions en Jeu :</h3>
+                    <div class="faction-quotes">
+                        <strong style="color: #58a6ff;">Consortium :</strong> « Les Éveillés doivent être encadrés afin de rassurer la population. La confiance passe par la réglementation. » (Utilise la peur pour imposer ses registres).
+                    </div>
+                    <div class="faction-quotes" style="border-left-color: #7dd3fc;">
+                        <strong style="color: #7dd3fc;">Enfants de Gaïa :</strong> « Ils vous craindront tant que vous chercherez leur approbation. » (La discrimination prouve que l'ancien monde refuse l'évolution).
+                    </div>
+                    <div class="faction-quotes" style="border-left-color: #f2cc60;">
+                        <strong style="color: #f2cc60;">Syndicat :</strong> « Quand deux camps se détestent, quelqu'un finit toujours par vendre les armes. » (Profite des tensions pour vendre faux papiers et cachettes).
+                    </div>
+
+                    <p style="font-size: 0.9rem; font-family: monospace; color: #8b949e; border-top: 1px dashed #ff7b72; padding-top: 10px; margin-top: 20px;">
+                        📌 <strong>Note confidentielle A.R.A :</strong> Probabilité de Déviation : faible. Impact d'une Déviation : catastrophique. <em>"Il suffit d'un seul cas pour faire oublier les mille autres."</em>
+                    </p>
+                </div>
+            </details>
+            
         </main>
 
         <aside>
