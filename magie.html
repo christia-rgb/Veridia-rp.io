@@ -6,7 +6,6 @@
     <title>Projet Veridia - Système des Anomalies</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* --- Styles du Thème Terminal Scientifique A.R.A. --- */
         .ara-scientific-header {
             background-color: #0d1117;
             border: 2px dashed #ff7b72;
@@ -24,7 +23,6 @@
             background-color: #161b22;
         }
 
-        /* En-tête des dossiers scientifiques */
         .ara-accordion summary {
             padding: 15px 20px;
             font-size: 1.2rem;
@@ -46,7 +44,6 @@
             color: #ffffff;
         }
 
-        /* Indicateur flèche pivotante */
         .ara-accordion summary::after {
             content: '▶';
             font-size: 0.9rem;
@@ -54,9 +51,8 @@
             color: #8b949e;
         }
 
-        /* État Ouvert */
         .ara-accordion[open] {
-            border-color: #ff7b72; /* Rouge scientifique pour les anomalies */
+            border-color: #ff7b72;
         }
         .ara-accordion[open] summary {
             border-bottom: 1px solid #30363d;
@@ -79,7 +75,6 @@
             to { opacity: 1; filter: blur(0); }
         }
 
-        /* Notes de terrain / Rapports médicaux */
         .ara-report-box {
             background-color: #0d1117;
             border-left: 3px solid #58a6ff;
@@ -92,7 +87,6 @@
             color: #58a6ff;
         }
 
-        /* Interceptions VNN */
         .vnn-fragment {
             background-color: #0d1117;
             border-left: 3px solid #f2cc60;
@@ -104,7 +98,6 @@
         }
         .vnn-fragment strong { color: #f2cc60; }
 
-        /* Tableaux de classification métrique */
         .matrix-table {
             width: 100%;
             border-collapse: collapse;
@@ -123,7 +116,6 @@
             color: #c9d1d9;
         }
 
-        /* Badges d'Indices */
         .badge {
             padding: 2px 6px;
             border-radius: 3px;
@@ -160,7 +152,6 @@
                     <em>Classification : OMEGA — Mise à jour continue (2026 PV).</em>
                 </div>
 
-                <!-- ================= VOLET 1 : THÉORIE & ÉVEIL ================= -->
                 <details class="ara-accordion">
                     <summary>🔬 ANOM_01 : DÉFINITION ET PHÉNOMÉNOLOGIE DE L'ÉVEIL</summary>
                     <div class="ara-content">
@@ -183,7 +174,6 @@
                     </div>
                 </details>
 
-                <!-- ================= VOLET 2 : STRUCTURE & LOIS ================= -->
                 <details class="ara-accordion">
                     <summary>⚖️ ANOM_02 : LES BRANCHES ET LES TROIS LOIS FONDAMENTALES</summary>
                     <div class="ara-content">
@@ -206,7 +196,6 @@
                     </div>
                 </details>
 
-                <!-- ================= VOLET 3 : INDICE DE DANGEROSITÉ ================= -->
                 <details class="ara-accordion">
                     <summary>📊 ANOM_03 : ÉCHELLE OFFICIELLE DE DANGEROSITÉ (INDICE ID)</summary>
                     <div class="ara-content">
@@ -256,7 +245,6 @@
                     </div>
                 </details>
 
-                <!-- ================= VOLET 4 : CORRUPTION & MÉTRIQUES ================= -->
                 <details class="ara-accordion">
                     <summary>☣️ ANOM_04 : MÉTRIQUES DE CORRUPTION ET STADES D'ÉVOLUTION</summary>
                     <div class="ara-content">
