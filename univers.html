@@ -6,7 +6,6 @@
     <title>Projet Veridia - Archives A.R.A.</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* --- Styles du Thème Terminal Archive A.R.A. --- */
         .ara-terminal-header {
             background-color: #0d1117;
             border: 2px dashed #ff7b72;
@@ -24,7 +23,6 @@
             background-color: #161b22;
         }
 
-        /* Façade du dossier d'archive */
         .ara-accordion summary {
             padding: 15px 20px;
             font-size: 1.2rem;
@@ -46,7 +44,6 @@
             color: #ffffff;
         }
 
-        /* Indicateur flèche pivotante */
         .ara-accordion summary::after {
             content: '▶';
             font-size: 0.9rem;
@@ -54,7 +51,6 @@
             color: #8b949e;
         }
 
-        /* État Ouvert */
         .ara-accordion[open] {
             border-color: #58a6ff;
         }
@@ -67,7 +63,6 @@
             color: #58a6ff;
         }
 
-        /* Contenu Déplié */
         .ara-content {
             padding: 25px;
             animation: terminalBlurIn 0.3s ease-out;
@@ -79,7 +74,6 @@
             to { opacity: 1; filter: blur(0); }
         }
 
-        /* Blocs de fragments réseaux / Interceptions */
         .vnn-fragment {
             background-color: #0d1117;
             border-left: 3px solid #f2cc60;
@@ -93,7 +87,6 @@
             color: #f2cc60;
         }
 
-        /* Badges de niveau de danger */
         .badge {
             padding: 2px 8px;
             border-radius: 3px;
@@ -106,7 +99,6 @@
         .badge-high { background-color: rgba(242, 107, 33, 0.15); color: #f78166; border: 1px solid #f78166; }
         .badge-crit { background-color: rgba(248, 81, 73, 0.15); color: #ff7b72; border: 1px solid #ff7b72; }
 
-        /* Listes de l'Atlas */
         .sub-district {
             margin-left: 15px;
             margin-bottom: 15px;
@@ -138,7 +130,6 @@
                     <em>Attention : Certaines données cartographiques ou temporelles peuvent être instables.</em>
                 </div>
 
-                <!-- ================= VOLET 1 : CHRONOLOGIE DES ANOMALIES ================= -->
                 <details class="ara-accordion">
                     <summary>⏳ FILE_01 : HISTOIRE ET GRANDE MANIFESTATION</summary>
                     <div class="ara-content">
@@ -163,7 +154,6 @@
                     </div>
                 </details>
 
-                <!-- ================= VOLET 2 : CHRONOLOGIE TEMPORELLE ================= -->
                 <details class="ara-accordion">
                     <summary>📅 FILE_02 : LIGNE DU TEMPS SYNCHRONISÉE (AV / PV)</summary>
                     <div class="ara-content">
@@ -190,7 +180,6 @@
                     </div>
                 </details>
 
-                <!-- ================= VOLET 3 : ATLAS URBAIN ================= -->
                 <details class="ara-accordion">
                     <summary>🗺️ FILE_03 : ATLAS DES SECTEURS ET INDICES DE DANGER</summary>
                     <div class="ara-content">
@@ -218,7 +207,6 @@
                     </div>
                 </details>
 
-                <!-- ================= VOLET 4 : CARTOGRAPHIE D'INFLUENCE ================= -->
                 <details class="ara-accordion">
                     <summary>📡 FILE_04 : RÉPARTITION DES NIVEAUX ET ZONES D'INFLUENCE</summary>
                     <div class="ara-content">
