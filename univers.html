@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Veridia - Archives A.R.A.</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- Styles du Thème Terminal Archive A.R.A. --- */
+        .ara-terminal-header {
+            background-color: #0d1117;
+            border: 2px dashed #ff7b72;
+            padding: 15px;
+            margin-bottom: 30px;
+            font-family: monospace;
+            color: #ff7b72;
+        }
+
+        .ara-accordion {
+            margin-bottom: 20px;
+            border: 1px solid #30363d;
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: #161b22;
+        }
+
+        /* Façade du dossier d'archive */
+        .ara-accordion summary {
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            font-family: monospace;
+            font-weight: bold;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            background-color: #21262d;
+            color: #c9d1d9;
+            border-bottom: 1px solid transparent;
+        }
+
+        .ara-accordion summary:hover {
+            background-color: #30363d;
+            color: #ffffff;
+        }
+
+        /* Indicateur flèche pivotante */
+        .ara-accordion summary::after {
+            content: '▶';
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+            color: #8b949e;
+        }
+
+        /* État Ouvert */
+        .ara-accordion[open] {
+            border-color: #58a6ff;
+        }
+        .ara-accordion[open] summary {
+            border-bottom: 1px solid #30363d;
+            color: #58a6ff;
+        }
+        .ara-accordion[open] summary::after {
+            transform: rotate(90deg);
+            color: #58a6ff;
+        }
+
+        /* Contenu Déplié */
+        .ara-content {
+            padding: 25px;
+            animation: terminalBlurIn 0.3s ease-out;
+            line-height: 1.6;
+        }
+
+        @keyframes terminalBlurIn {
+            from { opacity: 0; filter: blur(3px); }
+            to { opacity: 1; filter: blur(0); }
+        }
+
+        /* Blocs de fragments réseaux / Interceptions */
+        .vnn-fragment {
+            background-color: #0d1117;
+            border-left: 3px solid #f2cc60;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: monospace;
+            font-style: italic;
+            color: #8b949e;
+        }
+        .vnn-fragment strong {
+            color: #f2cc60;
+        }
+
+        /* Badges de niveau de danger */
+        .badge {
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .badge-low { background-color: rgba(56, 139, 253, 0.15); color: #58a6ff; border: 1px solid #58a6ff; }
+        .badge-mod { background-color: rgba(242, 204, 96, 0.15); color: #f2cc60; border: 1px solid #f2cc60; }
+        .badge-high { background-color: rgba(242, 107, 33, 0.15); color: #f78166; border: 1px solid #f78166; }
+        .badge-crit { background-color: rgba(248, 81, 73, 0.15); color: #ff7b72; border: 1px solid #ff7b72; }
+
+        /* Listes de l'Atlas */
+        .sub-district {
+            margin-left: 15px;
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 1px dotted #30363d;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Projet Veridia</h1>
+        <p>Base de Données Centrale de l'A.R.A.</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="univers.html" class="active">L'Univers</a>
+        <a href="factions.html">Les Factions</a>
+        <a href="magie.html">Les Anomalies</a>
+        <a href="regles.html">Règles du RP</a>
+    </nav>
+
+    <div class="container">
+        <main>
+            <section>
+                <div class="ara-terminal-header">
+                    <strong>📂 A.R.A. — ARCHIVES HISTORIQUES & CARTOGRAPHIQUES</strong><br>
+                    ACCÈS RESTREINT — NIVEAU OMEGA // ANNEE DE RÉFÉRENCE : 2026 PV<br>
+                    <em>Attention : Certaines données cartographiques ou temporelles peuvent être instables.</em>
+                </div>
+
+                <!-- ================= VOLET 1 : CHRONOLOGIE DES ANOMALIES ================= -->
+                <details class="ara-accordion">
+                    <summary>⏳ FILE_01 : HISTOIRE ET GRANDE MANIFESTATION</summary>
+                    <div class="ara-content">
+                        <h3>I. Avant la Grande Manifestation</h3>
+                        <p>Avant l’apparition massive des Anomalies, les phénomènes liés aux Flux étaient rares, isolés et systématiquement dissimulés[cite: 8]. Ils étaient classés sous le terme générique de <strong>Phénomènes Résiduels</strong> et étudiés en secret par des laboratoires aujourd'hui intégrés au Consortium[cite: 8].</p>
+                        
+                        <div class="vnn-fragment">
+                            <strong>[FRAGMENT VNN — ARCHIVE PARTIELLE]</strong><br>
+                            « …les autorités démentent toute activité paranormale dans le District Nord… les images circulant sur les réseaux sont qualifiées de falsifications avancées… »[cite: 8]
+                        </div>
+
+                        <h3>II. La Grande Manifestation (Jour Zéro)</h3>
+                        <p>Correspond à une explosion simultanée des Flux à l’échelle mondiale[cite: 8]. En moins de quelques heures, des milliers d’individus sont devenus Éveillés, des infrastructures ont été altérées et des formes de vie inconnues sont apparues[cite: 8]. Les hypothèses varient entre rupture naturelle du tissu de la réalité ou expérimentation technomagique ratée[cite: 8].</p>
+
+                        <div class="vnn-fragment">
+                            <strong>[FRAGMENT VNN — BROADCAST D’URGENCE]</strong><br>
+                            « Nous interrompons notre programme habituel… des incidents multiples sont signalés dans toute la ville… certains quartiers ne répondent plus aux communications… »[cite: 8]
+                        </div>
+
+                        <h3>III. Conséquences Immédiates & Stabilisation Actuelle</h3>
+                        <p>Les semaines suivantes ont vu l'effondrement partiel de la sécurité classique, la formation des factions et la création d'urgence de l'A.R.A[cite: 8]. Aujourd'hui, la ville est dans une phase de "stabilisation relative", où les anomalies ne disparaissent pas mais s'intègrent de force à l'écosystème urbain[cite: 8].</p>
+                    </div>
+                </details>
+
+                <!-- ================= VOLET 2 : CHRONOLOGIE TEMPORELLE ================= -->
+                <details class="ara-accordion">
+                    <summary>📅 FILE_02 : LIGNE DU TEMPS SYNCHRONISÉE (AV / PV)</summary>
+                    <div class="ara-content">
+                        <h3>🧬 Époque Pré-Anomalique (Jusqu'à 2025)</h3>
+                        <ul>
+                            <li><strong>AV -30 à -10 ans :</strong> Premiers rapports d'anomalies mineures étouffées par les autorités[cite: 8].</li>
+                            <li><strong>AV -10 à -1 ans :</strong> Consolidation des données énergétiques par des consortiums scientifiques privés[cite: 8].</li>
+                        </ul>
+
+                        <h3>⚡ PV 0 : La Grande Manifestation (03 Janvier 2026)</h3>
+                        <ul>
+                            <li><strong>03/01/2026 :</strong> Activation globale des Flux et transformation de la structure urbaine de Veridia[cite: 8].</li>
+                            <li><strong>Janvier - Février 2026 (PV 0.1) :</strong> Fondation de l’A.R.A. et mise en place des premiers protocoles de confinement contre la Corruption[cite: 8].</li>
+                            <li><strong>Février - Mars 2026 (PV 0.2) :</strong> Structuration sociale. Le Consortium s'impose industriellement, les Enfants de Gaïa se regroupent et le Syndicat monte ses réseaux criminels[cite: 8].</li>
+                        </ul>
+
+                        <h3>🌆 PV 1 → Actuel (2026 PV) : Stabilisation Instable</h3>
+                        <p>Normalisation partielle de la magie, développement des technologies hybrides (mana + numérique) mais multiplication des incidents critiques de Classe S[cite: 8].</p>
+                        
+                        <div class="vnn-fragment" style="border-left-color: #ff7b72;">
+                            <strong>📌 NOTE SECRÈTE DE L'A.R.A :</strong><br>
+                            Le temps à Veridia n’est plus linéaire. Certaines zones présentent des distorsions temporelles. Des cas de "mémoire altérée" et de "répétition locale" sont sous analyse active[cite: 8].
+                        </div>
+                    </div>
+                </details>
+
+                <!-- ================= VOLET 3 : ATLAS URBAIN ================= -->
+                <details class="ara-accordion">
+                    <summary>🗺️ FILE_03 : ATLAS DES SECTEURS ET INDICES DE DANGER</summary>
+                    <div class="ara-content">
+                        <p>Depuis la Grande Manifestation, la géographie administrative de Veridia s'est effacée au profit d'une classification fonctionnelle basée sur l'indice de dangerosité du Flux[cite: 8].</p>
+
+                        <div class="sub-district">
+                            <h4>🟢 Zones Sécurisées (Classe S) — <span class="badge badge-low">DANGER : FAIBLE</span></h4>
+                            <p><strong>District Central :</strong> Siège de l'A.R.A., infrastructures hautement sécurisées, présence forte du Consortium[cite: 8]. Les anomalies y sont rares, mais la guerre d'influence politique y est totale[cite: 8].</p>
+                        </div>
+
+                        <div class="sub-district">
+                            <h4>🟡 Zones Instables (Classe A-B) — <span class="badge badge-mod">DANGER : MODÉRÉ</span></h4>
+                            <p><strong>District Commercial & Technomagique :</strong> Hub économique majeur, marchés d'artefacts contrôlés[cite: 8]. Les anomalies y sont contenues mais les accidents techniques restent fréquents[cite: 8].</p>
+                        </div>
+
+                        <div class="sub-district">
+                            <h4>🔴 Zones Dangereuses (Classe C-S) — <span class="badge badge-high">DANGER : ÉLEVÉ</span></h4>
+                            <p><strong>Districts Contaminés :</strong> Altérations physiques permanentes du terrain, lois naturelles modifiées, faune et flore mutées[cite: 8]. Présence minimale de l'A.R.A[cite: 8].</p>
+                        </div>
+
+                        <div class="sub-district">
+                            <h4>⚫ Zones Interdites (Classe Ω) — <span class="badge badge-crit">DANGER : CRITIQUE / INCONNU</span></h4>
+                            <p><strong>Secteurs d'Échos & Nœuds Majeurs :</strong> Zones d'hallucinations collectives, boucles temporelles et disparitions pures et simples d'infrastructures. Cartographie impossible, accès strictement interdit[cite: 8].</p>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- ================= VOLET 4 : CARTOGRAPHIE D'INFLUENCE ================= -->
+                <details class="ara-accordion">
+                    <summary>📡 FILE_04 : RÉPARTITION DES NIVEAUX ET ZONES D'INFLUENCE</summary>
+                    <div class="ara-content">
+                        <p>Veridia s'organise en anneaux urbains concentriques traversés par des axes énergétiques (les <em>Fluxways</em>)[cite: 8]. Plus l'on s'éloigne du cœur central, plus l'influence des lois gouvernementales diminue[cite: 8].</p>
+
+                        <ul>
+                            <li><strong>Niveau 1 — Le Cœur Central :</strong> Contrôlé par le Consortium (★★★★★) et l'A.R.A. (★★★★★)[cite: 8]. La réalité y est stabilisée par contrat[cite: 8].</li>
+                            <li><strong>Niveau 3 — Zones de Transition :</strong> Quartiers Flux-Dérivés à l'architecture changeante. Territoire de maraude des Enfants de Gaïa (★★★☆☆) et de contrebande du Syndicat (★★★☆☆)[cite: 8].</li>
+                            <li><strong>Niveau 4 — Zones Noires (Quartiers du Syndicat) :</strong> Entièrement régis par les syndicats criminels. Marchés noirs d'artefacts illégaux, disparitions fréquentes. L'A.R.A note : <em>"Ce n'est pas une zone sans loi, c'est une zone avec ses propres lois."</em>[cite: 8]</li>
+                            <li><strong>Périphérie Extérieure — Sanctuaires de Gaïa :</strong> Nature sauvage ayant entièrement repris ses droits sous l'influence absolue des Enfants de Gaïa (★★★★★)[cite: 8].</li>
+                        </ul>
+
+                        <div class="vnn-fragment">
+                            <strong>[INTERCEPTION RÉSEAU VNN]</strong><br>
+                            « Selon l’A.R.A., le District Oublié est sécurisé. »<br>
+                            <em>[Commentaire utilisateur : 'Alors pourquoi il bouge sur la carte ?']</em><br>
+                            <em>[Réponse officielle de l'A.R.A : 'Erreur d’affichage.']</em>[cite: 8]
+                        </div>
+                    </div>
+                </details>
+
+            </section>
+        </main>
+        <aside>
+            <h2>Navigation Lore</h2>
+            <ul class="sidebar-links">
+                <li><a href="guide.html">📜 Guide d'Évolution</a></li>
+                <li><a href="index.html" class="active">🏠 Quitter les Archives</a></li>
+            </ul>
+        </aside>
+    </div>
+    <footer><p>&copy; 2026 Projet Veridia</p></footer>
+</body>
+</html>

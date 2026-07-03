@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Veridia - Système des Anomalies</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- Styles du Thème Terminal Scientifique A.R.A. --- */
+        .ara-scientific-header {
+            background-color: #0d1117;
+            border: 2px dashed #ff7b72;
+            padding: 15px;
+            margin-bottom: 30px;
+            font-family: monospace;
+            color: #ff7b72;
+        }
+
+        .ara-accordion {
+            margin-bottom: 20px;
+            border: 1px solid #30363d;
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: #161b22;
+        }
+
+        /* En-tête des dossiers scientifiques */
+        .ara-accordion summary {
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            font-family: monospace;
+            font-weight: bold;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            background-color: #21262d;
+            color: #c9d1d9;
+            border-bottom: 1px solid transparent;
+        }
+
+        .ara-accordion summary:hover {
+            background-color: #30363d;
+            color: #ffffff;
+        }
+
+        /* Indicateur flèche pivotante */
+        .ara-accordion summary::after {
+            content: '▶';
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+            color: #8b949e;
+        }
+
+        /* État Ouvert */
+        .ara-accordion[open] {
+            border-color: #ff7b72; /* Rouge scientifique pour les anomalies */
+        }
+        .ara-accordion[open] summary {
+            border-bottom: 1px solid #30363d;
+            color: #ff7b72;
+        }
+        .ara-accordion[open] summary::after {
+            transform: rotate(90deg);
+            color: #ff7b72;
+        }
+
+        /* Contenu Déplié */
+        .ara-content {
+            padding: 25px;
+            animation: terminalBlurIn 0.3s ease-out;
+            line-height: 1.6;
+        }
+
+        @keyframes terminalBlurIn {
+            from { opacity: 0; filter: blur(3px); }
+            to { opacity: 1; filter: blur(0); }
+        }
+
+        /* Notes de terrain / Rapports médicaux */
+        .ara-report-box {
+            background-color: #0d1117;
+            border-left: 3px solid #58a6ff;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: monospace;
+            color: #8b949e;
+        }
+        .ara-report-box strong {
+            color: #58a6ff;
+        }
+
+        /* Interceptions VNN */
+        .vnn-fragment {
+            background-color: #0d1117;
+            border-left: 3px solid #f2cc60;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: monospace;
+            font-style: italic;
+            color: #8b949e;
+        }
+        .vnn-fragment strong { color: #f2cc60; }
+
+        /* Tableaux de classification métrique */
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: rgba(0, 0, 0, 0.2);
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        .matrix-table th, .matrix-table td {
+            padding: 12px;
+            border: 1px solid #30363d;
+            text-align: left;
+        }
+        .matrix-table th {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #c9d1d9;
+        }
+
+        /* Badges d'Indices */
+        .badge {
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        .badge-g { color: #56d364; background: rgba(56, 211, 100, 0.15); border: 1px solid #56d364; }
+        .badge-b { color: #58a6ff; background: rgba(88, 166, 255, 0.15); border: 1px solid #58a6ff; }
+        .badge-y { color: #f2cc60; background: rgba(242, 204, 96, 0.15); border: 1px solid #f2cc60; }
+        .badge-o { color: #f0883e; background: rgba(240, 136, 62, 0.15); border: 1px solid #f0883e; }
+        .badge-r { color: #ff7b72; background: rgba(255, 123, 114, 0.15); border: 1px solid #ff7b72; }
+        .badge-p { color: #d2aeee; background: rgba(210, 174, 238, 0.15); border: 1px solid #d2aeee; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Projet Veridia</h1>
+        <p>Base de Données Centrale de l'A.R.A.</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="univers.html">L'Univers</a>
+        <a href="factions.html">Les Factions</a>
+        <a href="magie.html" class="active">Les Anomalies</a>
+        <a href="regles.html">Règles du RP</a>
+    </nav>
+
+    <div class="container">
+        <main>
+            <section>
+                <div class="ara-scientific-header">
+                    <strong>📂 A.R.A. — DOSSIER CENTRAL DES ANOMALIES</strong><br>
+                    FONDAMENTAUX THÉORIQUES & PROTOCOLES D’UTILISATION // DIVISION SCIENTIFIQUE<br>
+                    <em>Classification : OMEGA — Mise à jour continue (2026 PV).</em>
+                </div>
+
+                <!-- ================= VOLET 1 : THÉORIE & ÉVEIL ================= -->
+                <details class="ara-accordion">
+                    <summary>🔬 ANOM_01 : DÉFINITION ET PHÉNOMÉNOLOGIE DE L'ÉVEIL</summary>
+                    <div class="ara-content">
+                        <h3>I. Définition Opérationnelle</h3>
+                        <p>L’A.R.A. définit une <strong>Anomalie</strong> comme une altération localisée des lois de la réalité, résultant d’une Résonance stable ou instable entre un individu et les Flux environnementaux. Les Anomalies ne constituent pas une forme de “magie” externe : elles sont <strong>intrinsèques à l’individu</strong>. Aucune entité consciente ou divine n'a été validée[cite: 10].</p>
+                        
+                        <div class="ara-report-box">
+                            <strong>📌 NOTE DE TERRAIN — OBSERVATION A.R.A. #17 :</strong><br>
+                            « Nous avons cessé de chercher une source externe. Tout indique que le problème… vient de nous. »[cite: 10]
+                        </div>
+
+                        <h3>II. Phénoménologie de l’Éveil</h3>
+                        <p>L’Éveil correspond au moment où une Anomalie devient active[cite: 10]. Il survient généralement lors de situations critiques : stress émotionnel extrême, danger vital, exposition prolongée aux Flux ou rupture psychologique[cite: 10].</p>
+                        <p>Les manifestations varient d'une altération de la perception locale à des décharges énergétiques massives, bien que certaines activations passent totalement inaperçues[cite: 10].</p>
+
+                        <div class="ara-report-box">
+                            <strong>📌 NOTE CLINIQUE :</strong><br>
+                            « L’Éveil n’est pas un événement. C’est un point de non-retour. »[cite: 10]
+                        </div>
+                    </div>
+                </details>
+
+                <!-- ================= VOLET 2 : STRUCTURE & LOIS ================= -->
+                <details class="ara-accordion">
+                    <summary>⚖️ ANOM_02 : LES BRANCHES ET LES TROIS LOIS FONDAMENTALES</summary>
+                    <div class="ara-content">
+                        <h3>I. Branches Connues</h3>
+                        <p>Chaque individu semble résonner avec une structure dominante unique. Aucune hybridation complète n'est documentée à ce jour[cite: 10] :</p>
+                        <ul>
+                            <li><strong>Technomancie :</strong> Interaction directe avec les systèmes, machines et flux de données[cite: 10].</li>
+                            <li><strong>Biomancie :</strong> Altération, modification et influence du vivant[cite: 10].</li>
+                            <li><strong>Illusionnisme :</strong> Manipulation perceptive et altération des sens[cite: 10].</li>
+                            <li><strong>Cinétique :</strong> Influence directe du mouvement, des forces physiques et de l'inertie[cite: 10].</li>
+                            <li><strong>Échos cognitifs :</strong> Manipulation ou altération de la mémoire, de la perception et de la conscience[cite: 10].</li>
+                        </ul>
+
+                        <h3>II. Les Trois Lois des Anomalies</h3>
+                        <ol>
+                            <li><strong>Première Loi — Principe de Coût :</strong> Toute utilisation entraîne une consommation de <em>Résonance</em>. Plus l’effet est complexe, plus le coût est élevé[cite: 10].</li>
+                            <li><strong>Deuxième Loi — Principe de Marque :</strong> Toute utilisation laisse une trace physique, psychologique ou émotionnelle sur l’utilisateur, regroupée sous le terme de <strong>☣️ Corruption</strong>[cite: 10].</li>
+                            <li><strong>Troisième Loi — Principe de Limitation :</strong> Aucune Anomalie n'est absolue. Chaque individu possède une faiblesse exploitable[cite: 10].</li>
+                        </ol>
+                    </div>
+                </details>
+
+                <!-- ================= VOLET 3 : INDICE DE DANGEROSITÉ ================= -->
+                <details class="ara-accordion">
+                    <summary>📊 ANOM_03 : ÉCHELLE OFFICIELLE DE DANGEROSITÉ (INDICE ID)</summary>
+                    <div class="ara-content">
+                        <p>L’Indice de Dangerosité (ID) évalue la <strong>probabilité de perturbation du système environnant</strong> provoquée par un utilisateur de Flux, et non sa puissance brute[cite: 10].</p>
+
+                        <table class="matrix-table">
+                            <thead>
+                                <tr>
+                                    <th>Classification ID</th>
+                                    <th>Désignation Opérationnelle</th>
+                                    <th>Protocole A.R.A.</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="badge badge-g">ID-1</span></td>
+                                    <td><strong>Individu standard</strong></td>
+                                    <td>Aucune activité anormale détectée. Population civile non affectée[cite: 10].</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge badge-b">ID-2</span></td>
+                                    <td><strong>Éveillé stable</strong></td>
+                                    <td>Activation contrôlée d’Anomalie. Risque faible en conditions normales[cite: 10].</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge badge-y">ID-3</span></td>
+                                    <td><strong>Individu instable surveillé</strong></td>
+                                    <td>Variations de Résonance. Surveillance recommandée[cite: 10].</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge badge-o">ID-4</span></td>
+                                    <td><strong>Menace locale</strong></td>
+                                    <td>Activations non contrôlées fréquentes. Impact sur l'environnement direct[cite: 10].</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge badge-r">ID-5</span></td>
+                                    <td><strong>Menace critique</strong></td>
+                                    <td>Instabilité majeure confirmée. Intervention spécialisée obligatoire[cite: 10].</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge badge-p">ID-6</span></td>
+                                    <td><strong>Catastrophe active</strong></td>
+                                    <td>Effondrement local des paramètres physiques. Priorité absolue d'intervention[cite: 10].</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+
+                <!-- ================= VOLET 4 : CORRUPTION & MÉTRIQUES ================= -->
+                <details class="ara-accordion">
+                    <summary>☣️ ANOM_04 : MÉTRIQUES DE CORRUPTION ET STADES D'ÉVOLUTION</summary>
+                    <div class="ara-content">
+                        <h3>I. Échelle de Stabilité Anomalique (Corruption)</h3>
+                        <p>La Corruption mesure le désalignement progressif d'un individu avec la stabilité biologique et cognitive standard[cite: 10].</p>
+
+                        <table class="matrix-table">
+                            <thead>
+                                <tr>
+                                    <th>Niveau</th>
+                                    <th>Seuil Métrique</th>
+                                    <th>Symptômes Cliniques Documentés</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="badge badge-g">Niveau 0</span></td>
+                                    <td>0 à 5 %</td>
+                                    <td><strong>Stable.</strong> Fonctionnement biologique standard[cite: 10].</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge badge-y">Niveau I</span></td>
+                                    <td>6 à 20 %</td>
+                                    <td><strong>Résonance active.</strong> Fatigue, insomnie, micro-variations physiologiques[cite: 10].</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge badge-o">Niveau II</span></td>
+                                    <td>21 à 40 %</td>
+                                    <td><strong>Modification structurelle.</strong> Altérations physiques et vocales visibles, instabilité[cite: 10].</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge badge-r">Niveau III</span></td>
+                                    <td>41 à 60 %</td>
+                                    <td><strong>Instabilité avancée.</strong> Perte de contrôle partielle des phénomènes, risque direct[cite: 10].</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge badge-p">Niveau IV</span></td>
+                                    <td>61 à 80 %</td>
+                                    <td><strong>Déviation critique.</strong> Transformation avancée, émergence de l'Anomalie dominante[cite: 10].</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge badge-crit" style="color:#fff;">Niveau V</span></td>
+                                    <td>81 à 100 %</td>
+                                    <td><strong>Singularité.</strong> Perte d'humanité. Effondrement des paramètres standards. Inversable[cite: 10].</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3>II. Stades d'Évolution RP</h3>
+                        <ul>
+                            <li><strong>Stade I — Éveil :</strong> Apparition soudaine du pouvoir. Instabilité maximale et dangerosité élevée[cite: 10].</li>
+                            <li><strong>Stade II — Maîtrise :</strong> Compréhension des limites intrinsèques et réduction des incidents involontaires[cite: 10].</li>
+                            <li><strong>Stade III — Spécialiste :</strong> Adaptation complète, développement d'un style d'utilisation propre et efficace[cite: 10].</li>
+                        </ul>
+
+                        <div class="vnn-fragment">
+                            <strong>[FRAGMENT VNN — EXFILTRATION DE DOCUMENT]</strong><br>
+                            « Selon un document interne de l’A.R.A. fuivant sur les réseaux… il n’existerait aucun lien direct entre puissance et danger réel… »<br>
+                            <em>[Commentaire censuré : 'ça explique beaucoup de choses'][cite: 10]</em>
+                        </div>
+                    </div>
+                </details>
+
+            </section>
+        </main>
+        <aside>
+            <h2>Navigation Lore</h2>
+            <ul class="sidebar-links">
+                <li><a href="guide.html">📜 Enregistrer son Éveil</a></li>
+                <li><a href="index.html">🏠 Retour à l'accueil</a></li>
+            </ul>
+        </aside>
+    </div>
+    <footer><p>&copy; 2026 Projet Veridia</p></footer>
+</body>
+</html>

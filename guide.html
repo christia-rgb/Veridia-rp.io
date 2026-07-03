@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Veridia - Guide de Création</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- Styles du Thème Terminal Administratif A.R.A. --- */
+        .ara-admin-header {
+            background-color: #0d1117;
+            border: 2px dashed #58a6ff; /* Bleu administratif/protocole */
+            padding: 15px;
+            margin-bottom: 30px;
+            font-family: monospace;
+            color: #58a6ff;
+        }
+
+        .ara-accordion {
+            margin-bottom: 20px;
+            border: 1px solid #30363d;
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: #161b22;
+        }
+
+        .ara-accordion summary {
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            font-family: monospace;
+            font-weight: bold;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            background-color: #21262d;
+            color: #c9d1d9;
+            border-bottom: 1px solid transparent;
+        }
+
+        .ara-accordion summary:hover {
+            background-color: #30363d;
+            color: #ffffff;
+        }
+
+        .ara-accordion summary::after {
+            content: '▶';
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+            color: #8b949e;
+        }
+
+        .ara-accordion[open] {
+            border-color: #58a6ff;
+        }
+        .ara-accordion[open] summary {
+            border-bottom: 1px solid #30363d;
+            color: #58a6ff;
+        }
+        .ara-accordion[open] summary::after {
+            transform: rotate(90deg);
+            color: #58a6ff;
+        }
+
+        .ara-content {
+            padding: 25px;
+            animation: terminalBlurIn 0.3s ease-out;
+            line-height: 1.6;
+        }
+
+        @keyframes terminalBlurIn {
+            from { opacity: 0; filter: blur(3px); }
+            to { opacity: 1; filter: blur(0); }
+        }
+
+        /* Boîtes d'avertissement et de refus réglementaires */
+        .ara-alert-box {
+            background-color: #211515;
+            border-left: 3px solid #ff7b72;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: monospace;
+            color: #ff7b72;
+        }
+
+        .ara-info-box {
+            background-color: #0d1117;
+            border-left: 3px solid #58a6ff;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: monospace;
+            color: #8b949e;
+        }
+
+        /* Zone de texte du dossier de personnage (Copier-coller joueur) */
+        .ara-form-terminal {
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 4px;
+            padding: 20px;
+            font-family: monospace;
+            color: #c9d1d9;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            line-height: 1.5;
+            margin: 20px 0 40px 0;
+        }
+
+        /* Éléments de liste imbriqués pour la clarté */
+        .guide-list {
+            margin-bottom: 20px;
+        }
+        .guide-list li {
+            margin-bottom: 8px;
+        }
+
+        .pave-ouvert-titre {
+            font-family: monospace;
+            color: #58a6ff;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        blockquote {
+            background-color: #161b22;
+            border-left: 3px solid #8b949e;
+            padding: 10px 15px;
+            margin: 15px 0;
+            font-style: italic;
+            color: #c9d1d9;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Projet Veridia</h1>
+        <p>Base de Données Centrale de l'A.R.A.</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="univers.html">L'Univers</a>
+        <a href="factions.html">Les Factions</a>
+        <a href="magie.html">Les Anomalies</a>
+        <a href="regles.html">Règles du RP</a>
+    </nav>
+
+    <div class="container">
+        <main>
+            <section>
+                <div class="ara-admin-header">
+                    <strong>📂 A.R.A. — GUIDE CIVIL DE CRÉATION D’UN DOSSIER INDIVIDUEL</strong><br>
+                    PROCÉDURE D’ENREGISTREMENT D’UN INDIVIDU À VERIDIA<br>
+                    <em>CLASSIFICATION : PUBLIC // VERSION SIMPLIFIÉE — USAGE CIVIL</em>
+                </div>
+
+                <!-- I. BIENVENUE & INTRO (PAVÉ OUVERT) -->
+                <h2>🧭 I. BIENVENUE À VERIDIA</h2>
+                <p>Si vous lisez ceci, votre situation a probablement changé. Vous venez peut-être de découvrir une Anomalie, d’être transféré à Veridia, d’être enregistré par l’A.R.A., ou de survivre à un incident non classifié.</p>
+                <blockquote>Vous êtes désormais dans le système.</blockquote>
+
+                <h2>🧬 II. QU’EST-CE QU’UN PERSONNAGE À VERIDIA ?</h2>
+                <p>Un personnage n’est pas une “classe” ou un “build”. C’est un individu défini par son identité, son passé, sa Résonance, son rapport aux Flux et ses choix politiques (volontaires ou non).</p>
+
+                <h2>⚙️ III. LES ÉTAPES DE CRÉATION</h2>
+                <h3>1. IDENTITÉ</h3>
+                <p>Qui êtes-vous avant tout cela ? (Nom, Âge, Origine, Métier ou situation initiale).</p>
+                <blockquote>📌 Exemple A.R.A. : “Les profils les plus instables sont souvent les plus ordinaires.”</blockquote>
+
+                <h3>2. ÉTAT ANOMALIQUE</h3>
+                <p>Avez-vous été affecté par les Flux ? L’Éveil n’est pas un choix.</p>
+                <ul>
+                    <li>🟢 Non Éveillé</li>
+                    <li>🔵 Éveil récent</li>
+                    <li>🟡 Éveillé instable</li>
+                    <li>🟠 Éveillé partiellement maîtrisé</li>
+                </ul>
+
+                <h3>3. RÉSONANCE & CORRUPTION</h3>
+                <p>Votre corps et votre esprit réagissent aux Flux. La Résonance définit votre capacité d’utilisation, la Corruption votre transformation progressive. (Voir dossier A.R.A. correspondant).</p>
+
+                <h3>4. FACTION D’AFFILIATION</h3>
+                <p>À Veridia, aucune neutralité n’est totalement neutre. Vous devrez choisir une position… ou la subir.</p>
+
+                <!-- ================= VOLET 1 : LE GUIDE TECHNIQUE DES POUVOIRS ================= -->
+                <details class="ara-accordion" open>
+                    <summary>📜 DIRECTIVE_01 : PROTOCOLE DE CRÉATION DES ANOMALIES</summary>
+                    <div class="ara-content">
+                        <p>Chaque Anomalie enregistrée au sein de Veridia est unique, mais aucune n'est parfaite. Pour être validée par les services de l'A.R.A., une manifestation de Flux doit obligatoirement respecter la structure suivante[cite: 11] :</p>
+
+                        <h3>I. Un Concept Central Unique</h3>
+                        <p>Toute Anomalie repose sur un seul concept principal qui représente le cœur du pouvoir (ex : <em>Ombre, Verre, Électricité...</em>)[cite: 11]. Une Anomalie ne peut pas combiner plusieurs concepts sans justification exceptionnelle[cite: 11].</p>
+
+                        <h3>II. Une Fonction Principale</h3>
+                        <p>Votre Anomalie doit posséder une spécialité d'action bien définie : <strong>Créer, Détruire, Déplacer, Modifier, Renforcer, Affaiblir, Détecter ou Transformer</strong>[cite: 11].</p>
+
+                        <h3>III. Trois Capacités de Base & Limitation Majeure</h3>
+                        <p>Une Anomalie débute obligatoirement avec <strong>trois utilisations principales maximum</strong> au moment de l’Éveil[cite: 11]. De plus, elle doit posséder une <strong>faiblesse structurelle majeure</strong>[cite: 11].</p>
+
+                        <div class="ara-alert-box">
+                            <strong>⚠️ CRITÈRES DE REFUS SYSTÉMATIQUE :</strong><br>
+                            Une anomalie sera immédiatement rejetée par l'A.R.A. si elle : n'a aucune faiblesse, ne possède aucun contrecoup, permet de résoudre absolument toutes les situations, ou dépasse la limite d'évolution actuelle de Veridia[cite: 11].
+                        </div>
+                    </div>
+                </details>
+                
+                <p style="text-align: center; font-style: italic; color: #8b949e; margin-bottom: 40px;">À Veridia, un personnage n’est pas défini par sa puissance. Mais par la manière dont il survit à ce qu’il devient.</p>
+
+
+                <!-- ================= ACCORDÉONS : COMMUNIQUÉS DES FACTIONS ================= -->
+                <h2 style="font-family: monospace; color: #f2cc60;">🏛️ IV. COMMUNIQUÉS ET DOSSIERS DE FACTIONS</h2>
+
+                <!-- CONSORTIUM -->
+                <details class="ara-accordion">
+                    <summary>🏢 CONSORTIUM — COMMUNIQUÉ OFFICIEL N°44-Δ</summary>
+                    <div class="ara-content">
+                        <pre style="font-family: monospace; color: #8b949e;">ÉMIS PAR : SERVICE CENTRAL D’INFORMATION — CONSORTIUM
+DESTINATAIRES : POPULATION DE VERIDIA // CLASSIFICATION : PUBLIC</pre>
+                        <p>Citoyens de Veridia, la situation actuelle confirme une chose simple : l’instabilité ne peut être contenue sans structure. Depuis la Grande Manifestation, certains ont choisi la peur, d’autres le chaos. Le Consortium a choisi la continuité.</p>
+                        <p>Nous rappelons que :</p>
+                        <ul>
+                            <li>Les Flux ne sont pas un miracle ;</li>
+                            <li>Les Anomalies ne sont pas une fatalité ;</li>
+                            <li>L’instabilité est un problème de gestion, non de destin.</li>
+                        </ul>
+                        <p>Les récents incidents dans les districts périphériques démontrent la nécessité d’une régulation plus stricte des Éveillés non enregistrés. La liberté sans contrôle n’est pas la liberté. C’est une variable instable.</p>
+                        <blockquote>“Ce qui n’est pas maîtrisé finit toujours par coûter plus cher que ce qui l’est.”<br>— Direction du Consortium</blockquote>
+                    </div>
+                </details>
+
+                <!-- GAÏA -->
+                <details class="ara-accordion">
+                    <summary>🌿 ENFANTS DE GAÏA — TRACT MILITANT CIBLÉ</summary>
+                    <div class="ara-content" style="color: #7dd3fc;">
+                        <pre style="font-family: monospace; color: #8b949e;">DIFFUSION NON AUTORISÉE — RÉSEAU FLOTTANT
+ORIGINE : INCONNUE (PROBABLEMENT DISTRICT OUBLIÉ)</pre>
+                        <h3>Ils vous mentent depuis le début.</h3>
+                        <p>Regardez vos rues. Regardez vos tours. Regardez vos corps. Ils appellent ça “stabilité”. Nous appellons ça <strong>asphyxie</strong>. Depuis la Grande Manifestation, vous avez changé. Le monde a changé. Et pourtant ils veulent vous réparer comme si vous étiez cassés.</p>
+                        <p>Les Anomalies ne sont pas une erreur. Elles sont une mémoire du monde avant leur contrôle. Le Consortium veut les breveter. L’A.R.A. veut les classer. Le Syndicat veut les vendre. Et vous ? Vous êtes encore là à demander la permission d’exister.</p>
+                        <p>🌿 Rejoignez ce qui grandit. <br>🌿 Refusez ce qui enferme.<br>🌿 Laissez les Flux vous rendre ce qu’ils vous ont pris.</p>
+                        <blockquote>“Ils appellent cela corruption parce qu’ils ne savent pas appeler cela évolution.”<br>— Fragment attribué aux Cercles de Gaïa</blockquote>
+                    </div>
+                </details>
+
+                <!-- SYNDICAT -->
+                <details class="ara-accordion">
+                    <summary>🎭 SYNDICAT — RUMEUR CRYPTÉE INTERCEPTÉE</summary>
+                    <div class="ara-content" style="color: #f2cc60; font-family: monospace;">
+                        <pre style="color: #8b949e;">SOURCE : CANAL NON IDENTIFIÉ // TRAME INTERCEPTÉE — DÉCRYPTAGE PARTIEL
+PROBABILITÉ D’AUTHENTICITÉ : 63%</pre>
+                        <p>tu veux savoir un truc drôle ? tout le monde parle des anomalies comme si c’était le problème mais personne parle de ceux qui comptent les cadavres ou ceux qui comptent les profits ou ceux qui comptent les deux en même temps.</p>
+                        <p>le consortium te donne des règles, gaia te donne des rêves, l’ara te donne des formulaires... et toi tu continues à jouer le jeu. si tu veux survivre à veridia, arrête de demander qui a raison et demande plutôt qui a besoin que tu le croies.</p>
+                        <blockquote>“la vérité n’est pas cachée elle est vendue à celui qui paie le mieux”<br>— fragment audio récupéré sur canal Grid-7</blockquote>
+                    </div>
+                </details>
+
+                <!-- POSITION A.R.A. -->
+                <details class="ara-accordion">
+                    <summary>🛡️ POSITION DE L’A.R.A. — NOTE AUX CIVILS</summary>
+                    <div class="ara-content">
+                        <pre style="font-family: monospace; color: #8b949e;">DIVISION ADMINISTRATIVE — INFORMATION CIVILE</pre>
+                        <p>L’A.R.A. n’impose aucune affiliation. Cependant, nous rappelons que :</p>
+                        <ul>
+                            <li>Certaines zones sont contrôlées par des factions actives ;</li>
+                            <li>La neutralité n’empêche pas les conflits ;</li>
+                            <li>L’absence d’enregistrement peut limiter l’accès aux services de protection.</li>
+                        </ul>
+                        <p>Votre sécurité dépend de votre compréhension du système. Et de votre capacité à y exister.</p>
+                        <blockquote>“Être non affilié ne signifie pas être invisible. Cela signifie être non prioritaire.”</blockquote>
+                    </div>
+                </details>
+
+                <!-- ================= ACCORDÉONS : COULOIRS DU VNN (INDÉPENDANTS) ================= -->
+                <details class="ara-accordion">
+                    <summary>📺 VNN — EXTENSION D'INFORMATION : LE STATUT DES "NON-CLASSÉS"</summary>
+                    <div class="ara-content">
+                        <pre style="font-family: monospace; color: #8b949e;">VNN — VERIDIA NEWS NETWORK // SECTION : VIE CIVILE
+CLASSIFICATION : PUBLIC</pre>
+                        
+                        <h3>📰 EXTRAIT — ÉDITION MATINALE : “VIVRE À VERIDIA SANS FACTION”</h3>
+                        <p><em>“Ils ne font pas partie du Consortium, ils ne suivent pas Gaïa, et ils n’ont jamais entendu parler du Syndicat… du moins officiellement. Ils travaillent, ils rentrent chez eux, ils évitent les zones à risque et espèrent que rien ne change trop vite.”</em></p>
+                        <p>Dans les quartiers résidentiels, une grande partie de la population ne se considère rattachée à aucun mouvement. Ils se décrivent simplement comme employés, étudiants, commerçants ou citoyens “non concernés”.</p>
+
+                        <h3>🏙️ LE QUOTINIEN DES INDÉPENDANTS (DISTRICT 4)</h3>
+                        <p><blockquote>“Je ne veux pas choisir de camp. Je veux juste que ça s’arrête.”<br>— Témoignage anonyme, 34 ans</blockquote></p>
+                        <p>Pour beaucoup, les Anomalies ne sont pas une révolution, mais un problème logistique : transports perturbés, contrôles A.R.A. fréquents, rumeurs de zones instables et ajustements constants du quotidien.</p>
+
+                        <h3>⚠️ RISQUE PERÇU & ANALYSE SOCIALE</h3>
+                        <p>L’A.R.A. rappelle que l’absence d’affiliation ne constitue pas un statut protégé en cas d’incident. Les indépendants sont statistiquement moins impliqués dans les conflits directs, mais ils sont **plus exposés aux événements imprévus** et jamais prioritaires dans les interventions médicales ou de sécurisation.</p>
+                        <p><em>“La question n’est plus : pourquoi ils ne choisissent pas ? Mais : combien de temps peuvent-ils encore éviter de le faire ?”</em></p>
+                    </div>
+                </details>
+
+            </section>
+        </main>
+
+        <aside>
+            <h2>Navigation Lore</h2>
+            <ul class="sidebar-links">
+                <li><a href="magie.html">🧪 Rapports d'Anomalies</a></li>
+                <li><a href="regles.html">⚖️ Règles de l'Arbitrage</a></li>
+                <li><a href="index.html">🏠 Retour à l'accueil</a></li>
+            </ul>
+
+            <!-- BLOC RÉSUMÉ SIMPLE INJECTÉ ICI -->
+            <h2 style="margin-top: 30px;">📌 RÉSUMÉ SIMPLE (Nouveaux)</h2>
+            <div style="font-size: 0.85rem; color: #8b949e; line-height: 1.8; font-family: monospace; background: #0d1117; padding: 15px; border-radius: 4px; border: 1px dashed #30363d;">
+                Pour créer ton personnage :<br>
+                1. <strong>Qui es-tu ?</strong> (Identité civile)<br>
+                2. <strong>Es-tu Éveillé ?</strong> (Stade d'évolution)<br>
+                3. <strong>Comment fonctionne ton pouvoir ?</strong> (Concept & Contrecoups)<br>
+                4. <strong>Quelle est ta faction ?</strong> (Affiliation ou Zone grise)<br>
+                5. <strong>Jusqu'où acceptes-tu de changer ?</strong>
+            </div>
+
+            <h2 style="margin-top: 30px;">🎲 NOTE FINALE[source: 13]</h2>
+            <p style="font-size: 0.85rem; color: #ff7b72; font-family: monospace; line-height: 1.4;">
+                La cohérence avec l'univers et le respect des limitations de l'A.R.A. conditionnent la validation finale de votre dossier par l'équipe d'animation[cite: 11, 13].
+            </p>
+        </aside>
+    </div>
+    <footer><p>&copy; 2026 Projet Veridia — Document à usage civil homologué.</p></footer>
+</body>
+</html>

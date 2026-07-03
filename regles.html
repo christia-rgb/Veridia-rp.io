@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Veridia - Règles du RP</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- Styles du Thème Terminal Arbitrage A.R.A. --- */
+        .ara-terminal-header {
+            background-color: #0d1117;
+            border: 2px dashed #ff7b72;
+            padding: 15px;
+            margin-bottom: 30px;
+            font-family: monospace;
+            color: #ff7b72;
+        }
+
+        .ara-accordion {
+            margin-bottom: 20px;
+            border: 1px solid #30363d;
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: #161b22;
+        }
+
+        .ara-accordion summary {
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            font-family: monospace;
+            font-weight: bold;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            background-color: #21262d;
+            color: #c9d1d9;
+            border-bottom: 1px solid transparent;
+        }
+
+        .ara-accordion summary:hover {
+            background-color: #30363d;
+            color: #ffffff;
+        }
+
+        .ara-accordion summary::after {
+            content: '▶';
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+            color: #8b949e;
+        }
+
+        .ara-accordion[open] { border-color: #58a6ff; }
+        .ara-accordion[open] summary {
+            border-bottom: 1px solid #30363d;
+            color: #58a6ff;
+        }
+        .ara-accordion[open] summary::after {
+            transform: rotate(90deg);
+            color: #58a6ff;
+        }
+
+        .ara-content {
+            padding: 25px;
+            animation: terminalBlurIn 0.3s ease-out;
+            line-height: 1.6;
+        }
+
+        @keyframes terminalBlurIn {
+            from { opacity: 0; filter: blur(3px); }
+            to { opacity: 1; filter: blur(0); }
+        }
+
+        .ara-alert-box {
+            background-color: #211515;
+            border-left: 3px solid #ff7b72;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: monospace;
+            color: #ff7b72;
+        }
+
+        .ara-info-box {
+            background-color: #0d1117;
+            border-left: 3px solid #58a6ff;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: monospace;
+            color: #8b949e;
+        }
+
+        .ara-success-box {
+            background-color: #0f1f12;
+            border-left: 3px solid #3fb950;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: monospace;
+            color: #3fb950;
+        }
+
+        .ara-warn-box {
+            background-color: #1f1a0e;
+            border-left: 3px solid #f2cc60;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: monospace;
+            color: #f2cc60;
+        }
+
+        .dice-block {
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: monospace;
+        }
+
+        .dice-block h4 {
+            color: #79c0ff;
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        .example-rp {
+            background-color: #0d1117;
+            border: 1px dashed #30363d;
+            border-radius: 4px;
+            padding: 15px 20px;
+            margin: 15px 0;
+            font-family: monospace;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: #c9d1d9;
+        }
+
+        .example-rp .speaker {
+            color: #58a6ff;
+            font-weight: bold;
+        }
+
+        .example-rp .action {
+            color: #8b949e;
+            font-style: italic;
+        }
+
+        .example-rp .bad {
+            color: #ff7b72;
+            font-weight: bold;
+        }
+
+        .example-rp .good {
+            color: #3fb950;
+            font-weight: bold;
+        }
+
+        .rule-number {
+            display: inline-block;
+            background-color: #58a6ff;
+            color: #0d1117;
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 0.75rem;
+            padding: 2px 7px;
+            border-radius: 3px;
+            margin-right: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background-color: #21262d;
+            color: #58a6ff;
+            padding: 10px 14px;
+            text-align: left;
+            border: 1px solid #30363d;
+        }
+
+        td {
+            padding: 9px 14px;
+            border: 1px solid #30363d;
+            color: #c9d1d9;
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) td { background-color: #161b22; }
+        tr:nth-child(odd) td { background-color: #0d1117; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Projet Veridia</h1>
+        <p>Protocoles de Conduite — Division Arbitrage de l'A.R.A.</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="univers.html">L'Univers</a>
+        <a href="factions.html">Les Factions</a>
+        <a href="magie.html">Les Anomalies</a>
+        <a href="regles.html" class="active">Règles du RP</a>
+    </nav>
+
+    <div class="container">
+        <main>
+            <section>
+                <div class="ara-terminal-header">
+                    <strong>📂 A.R.A. — PROTOCOLES DE CONDUITE & ARBITRAGE</strong><br>
+                    DIRECTIVE INTERNE // DIVISION RÉGULATION DES COMPORTEMENTS<br>
+                    <em>Toute violation de ces protocoles est enregistrée et transmise au Conseil d'Arbitrage.</em>
+                </div>
+
+                <!-- ================= DIRECTIVE 1 ================= -->
+                <details class="ara-accordion" open>
+                    <summary>📋 DIRECTIVE_01 : FONDAMENTAUX DU ROLEPLAY</summary>
+                    <div class="ara-content">
+                        <p>Le roleplay sur Veridia repose sur la narration collaborative. Chaque joueur est l'auteur de son personnage — pas d'un dieu, pas d'un arbitre, pas d'un scénariste. Le but est de co-construire une histoire intéressante pour tout le monde, et non pas de la "gagner". Merci de respecter le fair-play et la cohérence globale[cite: 12].</p>
+
+                        <h3><span class="rule-number">R1</span> Séparation Joueur / Personnage (No-Metagame)</h3>
+                        <p>Ce que ressent ton personnage n'est pas ce que tu ressens[cite: 12]. Ce qu'il sait n'est pas ce que tu sais[cite: 12]. Il est strictement interdit d'utiliser en jeu une information que ton personnage n'aurait pas pu obtenir de manière RP (canaux OOC, fiches, etc.)[cite: 12].</p>
+
+                        <div class="example-rp">
+                            <span class="bad">❌ METAGAME :</span> Tu lis dans le canal OOC que le personnage de Kaël est un agent du Consortium infiltré. Ton personnage l'affronte avec cette info en tête[cite: 12].<br><br>
+                            <span class="good">✅ CORRECT :</span> Ton personnage n'a aucune raison de se méfier de Kaël. Il joue la scène sans cette connaissance, attendant la révélation légitime en jeu[cite: 12].
+                        </div>
+
+                        <h3><span class="rule-number">R2</span> Écrire ses actions, pas celles des autres (No-Godmod)</h3>
+                        <p>Tu décris uniquement ce que ton personnage <em>tente</em> de faire[cite: 12]. Tu ne décides jamais de la réussite d'une action directe sur un autre joueur sans son accord préalable[cite: 12]. L'adversaire choisit toujours comment son personnage encaisse ou esquive[cite: 12].</p>
+
+                        <div class="example-rp">
+                            <span class="bad">❌ GODMOD :</span> <span class="speaker">Mira</span> <span class="action">attrape le bras de Shan, le tord derrière son dos et le neutralise au sol.</span>[cite: 12]<br><br>
+                            <span class="good">✅ CORRECT :</span> <span class="speaker">Mira</span> <span class="action">tente de saisir le bras de Shan et de le tordre dans son dos, cherchant à le déséquilibrer.</span>[cite: 12]
+                        </div>
+
+                        <h3><span class="rule-number">R3</span> Cohérence avec l'Univers (No-Lore-Break)</h3>
+                        <p>Veridia possède un univers et des lois physiques bien établis[cite: 12]. Tes actions et l'usage de tes capacités doivent rester strictement proportionnels à ton stade d'évolution validé et conformes aux Trois Lois des Anomalies[cite: 12]. Un personnage de Stade 2 ne peut pas renverser un Transcendant[cite: 12].</p>
+
+                        <div class="ara-warn-box">
+                            <strong>⚠️ RAPPEL RECRUTEMENT & PROGRESSION :</strong> Les pouvoirs évoluent exclusivement via les événements RP supervisés et les validations du staff, jamais de manière unilatérale[cite: 12].
+                        </div>
+                    </div>
+                </details>
+
+                <!-- ================= DIRECTIVE 2 ================= -->
+                <details class="ara-accordion">
+                    <summary>🎲 DIRECTIVE_02 : SYSTÈME DE RÉSOLUTION (LES DÉS)</summary>
+                    <div class="ara-content">
+                        <p>La narration libre gère la majorité des interactions courantes[cite: 12]. Cependant, dès que le résultat d'une action devient <strong>incertain et présente un enjeu réel</strong> pour les deux parties, l'utilisation d'un dé à vingt faces (<strong>1d20</strong>) devient la norme absolue[cite: 12].</p>
+
+                        <div class="dice-block">
+                            <h4>🎯 TABLEAU DE RÉSOLUTION STANDARD — 1d20</h4>
+                            <table>
+                                <thead>
+                                    <tr><th>Résultat</th><th>Niveau</th><th>Effet narratif</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>1</td><td>🔴 Échec Critique</td><td>L'action échoue lamentablement et se retourne contre toi[cite: 12].</td></tr>
+                                    <tr><td>2 – 6</td><td>🟠 Échec</td><td>L'action échoue[cite: 12]. L'adversaire garde l'avantage complet[cite: 12].</td></tr>
+                                    <tr><td>7 – 11</td><td>🟡 Succès Partiel</td><td>L'action réussit, mais s'accompagne d'une complication ou d'un coût[cite: 12].</td></tr>
+                                    <tr><td>12 – 17</td><td>🟢 Succès</td><td>L'action se déroule exactement comme prévu[cite: 12].</td></tr>
+                                    <tr><td>18 – 19</td><td>🔵 Succès Critique</td><td>L'action réussit au-delà des attentes, offrant un avantage narratif[cite: 12].</td></tr>
+                                    <tr><td>20</td><td>⚡ Succès Parfait</td><td>Réussite totale et spectaculaire validée par l'arbitrage[cite: 12].</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>Modificateurs de Contexte</h3>
+                        <p>Certains facteurs peuvent altérer ton jet via un bonus d'<strong>avantage (+3)</strong> ou un malus de <strong>désavantage (-3)</strong> :</p>
+
+                        <table>
+                            <thead>
+                                <tr><th>Situation de jeu</th><th>Modificateur</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Utiliser son Anomalie dans son concept de prédilection[cite: 12]</td><td>+3[cite: 12]</td></tr>
+                                <tr><td>Agir en Résonance avec un allié compatible[cite: 12]</td><td>+3[cite: 12]</td></tr>
+                                <tr><td>Environnement favorable au concept de l'Anomalie[cite: 12]</td><td>+2[cite: 12]</td></tr>
+                                <tr><td>Première utilisation d'un pouvoir non encore maîtrisé[cite: 12]</td><td>-2[cite: 12]</td></tr>
+                                <tr><td>Agir sous Corruption avancée (Stade Mental ou Spirituel)[cite: 12]</td><td>-3[cite: 12]</td></tr>
+                                <tr><td>Affronter un adversaire de stade supérieur[cite: 12]</td><td>-3[cite: 12]</td></tr>
+                            </tbody>
+                        </table>
+
+                        <div class="example-rp">
+                            <strong>EXEMPLE D'APPLICATION :</strong><br><br>
+                            <span class="speaker">Kira (Électricité)</span> <span class="action">tente de surcharger le panneau de sécurité du laboratoire.</span>[cite: 12]<br>
+                            Le joueur lance le dé et obtient un <strong>9</strong> (Succès Partiel)[cite: 12].<br><br>
+                            <span class="action">Résolution : Le panneau s'éteint bien, mais les fusibles explosent avec un grand flash bruyant, alertant les patrouilles à proximité. Kira remplit son objectif mais perd sa discrétion[cite: 12].</span>
+                        </div>
+
+                        <div class="ara-info-box">
+                            <strong>💡 CONSEIL DE FLUX :</strong> Ne sortez pas les dés pour les discussions, les moments d'ambiance ou les scènes sociales[cite: 12]. La narration libre prévaut tant qu'il n'y a pas de confrontation ou de danger immédiat[cite: 12].
+                        </div>
+                    </div>
+                </details>
+
+                <!-- ================= DIRECTIVE 3 ================= -->
+                <details class="ara-accordion">
+                    <summary>⚔️ DIRECTIVE_03 : PROTOCOLE DE COMBAT EN JEU</summary>
+                    <div class="ara-content">
+                        <p>Un combat RP est avant tout une scène d'action co-écrite[cite: 12]. Qu'importe l'issue (victoire ou défaite), l'objectif est d'alimenter l'évolution narrative des deux personnages impliqués[cite: 12].</p>
+
+                        <h3><span class="rule-number">C1</span> Déclarer avant de lancer</h3>
+                        <p>Chaque joueur doit d'abord décrire son intention d'action dans son message écrit avant de procéder au jet de dé[cite: 12]. Le résultat chiffré guidera ensuite la rédaction de la réaction[cite: 12].</p>
+
+                        <h3><span class="rule-number">C2</span> Une action majeure par tour</h3>
+                        <p>Un tour équivaut à une seule action principale[cite: 12]. Il est impossible d'attaquer au corps à corps, d'esquiver une attaque et de lancer un sort complexe dans un même paragraphe[cite: 12]. Une narration riche ne signifie pas multiplier les actions physiques[cite: 12].</p>
+
+                        <h3><span class="rule-number">C3</span> Acceptation des Conséquences</h3>
+                        <p>Ignorer un résultat de dé défavorable ou omettre de jouer les contrecoups de son échec est assimilé à du powerplay[cite: 12]. Si ton jet échoue, ton personnage doit en subir l'impact direct dans sa prochaine ligne[cite: 12].</p>
+
+                        <h3><span class="rule-number">C4</span> Neutralisation et Mort de personnage</h3>
+                        <p>Un personnage ne subira <strong>jamais de mort définitive (Player Kill) sans le consentement explicite</strong> de son joueur[cite: 12]. Cependant, la mise hors combat (blessure lourde, coma, capture) est une issue normale dictée par les dés et doit être acceptée sans négociation[cite: 12].</p>
+
+                        <div class="ara-alert-box">
+                            <strong>🚨 RÈGLE D'OR DE LA DIVISION :</strong> Forcer la mort ou la mutilation permanente d'un tiers sans accord est passible d'une exclusion immédiate de la scène et d'une sanction disciplinaire[cite: 12].
+                        </div>
+                    </div>
+                </details>
+
+                <!-- ================= DIRECTIVE 4 ================= -->
+                <details class="ara-accordion">
+                    <summary>⚖️ DIRECTIVE_04 : RECOURS À L'ARBITRAGE (MJ)</summary>
+                    <div class="ara-content">
+                        <p>Les Maîtres du Jeu n'interviennent pas pour modérer vos interactions quotidiennes, mais régulent les points de rupture et les évolutions de lore majeurs[cite: 12].</p>
+
+                        <h3>Quand solliciter l'aide d'un MJ ?</h3>
+                        <ul>
+                            <li>Un désaccord persistant sur l'interprétation narrative d'un dé[cite: 12].</li>
+                            <li>Une action litigieuse qui semble dépasser le stade officiel d'un joueur[cite: 12].</li>
+                            <li>Un événement modifiant drastiquement l'univers (destruction, trahison de faction majeure)[cite: 12].</li>
+                            <li>Une demande formelle d'évolution de Stade (Stade 2 à 3, etc.)[cite: 12].</li>
+                        </ul>
+
+                        <div class="ara-success-box">
+                            <strong>✅ PROTOCOLE DE SIGNALEMENT :</strong><br>
+                            1. Indiquez la mention <strong>[PAUSE]</strong> dans le canal concerné pour figer la scène[cite: 12].<br>
+                            2. Ouvrez un ticket via le salon dédié ou contactez un MJ disponible avec un résumé factuel[cite: 12].<br>
+                            3. Le MJ rend un arbitrage ferme. Sa décision est définitive et non négociable[cite: 12].
+                        </div>
+                    </div>
+                </details>
+
+                <!-- ================= DIRECTIVE 5 ================= -->
+                <details class="ara-accordion">
+                    <summary>🚫 DIRECTIVE_05 : INFRACTIONS PROTOCOLAIRES & SANCTIONS</summary>
+                    <div class="ara-content">
+                        <p>La Division d'Arbitrage applique des sanctions graduées ou immédiates selon la gravité du comportement répréhensible observé sur le serveur[cite: 12].</p>
+
+                        <table>
+                            <thead>
+                                <tr><th>Conduite Prohibée</th><th>Définition Technique</th><th>Sanction Standard</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Godmod</strong>[cite: 12]</td>
+                                    <td>Prendre le contrôle du personnage d'autrui ou valider ses propres coups unilatéralement[cite: 12].</td>
+                                    <td>Avertissement formel et annulation de l'action[cite: 12].</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Metagame</strong>[cite: 12]</td>
+                                    <td>Exploiter des données lues hors-jeu pour avantager son personnage dans l'histoire[cite: 12].</td>
+                                    <td>Retrait immédiat de l'avantage et invalidation de la scène[cite: 12].</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Powerplay / Anti-Fairplay</strong>[cite: 12]</td>
+                                    <td>Refuser systématiquement l'échec, ignorer les contrecoups et se comporter en entité invincible[cite: 12].</td>
+                                    <td>Mise à pied et suspension temporaire du personnage[cite: 12].</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Lore-Break</strong>[cite: 12]</td>
+                                    <td>Violer délibérément la géographie de la ville ou le fonctionnement fondamental du Flux[cite: 12].</td>
+                                    <td>Retcon (correction narrative) obligatoire sous supervision[cite: 12].</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>PK Non Consenti</strong>[cite: 12]</td>
+                                    <td>Tenter d'éliminer définitivement le personnage d'un joueur sans son autorisation écrite[cite: 12].</td>
+                                    <td>Annulation immédiate de la scène + avertissement de niveau rouge[cite: 12].</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+
+                <!-- ================= DIRECTIVE 6 ================= -->
+                <details class="ara-accordion">
+                    <summary>📡 DIRECTIVE_06 : CIRCUITS DE MISSIONS (A.R.A. VS GRID)</summary>
+                    <div class="ara-content">
+                        <p>Les opportunités et les quêtes à Veridia se divisent en deux réseaux d'annonces aux philosophies radicalement opposées, à utiliser selon l'alignement et le profil de votre personnage[cite: 12].</p>
+
+                        <h3>📢 L'A.R.A. (Agence de Régulation des Anomalies) — Canal Officiel</h3>
+                        <p>Il s'agit de l'organisme de diffusion public et gouvernemental de la ville[cite: 12]. Ses directives et appels d'offres visent à maintenir l'ordre et la sécurité publique[cite: 12].</p>
+                        <ul>
+                            <li><strong>Accessibilité :</strong> Ouvert à l'intégralité de la population civile, des citoyens lambda (Mondains) jusqu'aux Éveillés enregistrés[cite: 12].</li>
+                            <li><strong>Typologie de missions :</strong> Gestion de crises mineures en zone urbaine, rapports d'incidents mineurs, logistique et stabilisation civile[cite: 12].</li>
+                            <li><strong>Bénéfices :</strong> Gain de réputation légale, influence sociale et accès à des infrastructures sécurisées[cite: 12].</li>
+                            <li><strong>Facteur de Risque :</strong> Faible à modéré[cite: 12]. Les actions sont encadrées et se déroulent sous les yeux de la ville entière[cite: 12].</li>
+                        </ul>
+
+                        <h3>🕸️ Le Grid — Réseau Clandestin Crypté</h3>
+                        <p>Le Grid représente le dark web non censuré de Veridia[cite: 12]. Totalement affranchi de la surveillance de l'A.R.A., ce marché noir centralise toutes les requêtes illégitimes ou inavouables de la cité[cite: 12].</p>
+                        <ul>
+                            <li><strong>Accessibilité :</strong> Filtré et strictement restreint. Seuls les mercenaires réputés ou les membres de factions confirmés (Consortium, Syndicat, Gaïa) y possèdent un accès fonctionnel[cite: 12]. Les civils en sont totalement exclus[cite: 12].</li>
+                            <li><strong>Typologie de missions :</strong> Opérations d'assassinat ciblé, vols de technologies ou d'artefacts, sabotage industriel, extractions clandestines[cite: 12].</li>
+                            <li><strong>Bénéfices :</strong> Devises majeures, obtention d'artefacts de flux uniques et progression rapide dans les cercles criminels[cite: 12].</li>
+                            <li><strong>Facteur de Risque :</strong> Critique et mortel[cite: 12]. En acceptant un contrat du Grid, vous signez une décharge : les représailles y sont définitives et peuvent mener à des captures ou des séquelles physiques lourdes[cite: 12].</li>
+                        </ul>
+                    </div>
+                </details>
+
+            </section>
+        </main>
+
+        <aside>
+            <h2>Navigation Règles</h2>
+            <ul class="sidebar-links">
+                <li><a href="guide.html">📂 Créer son Personnage</a></li>
+                <li><a href="magie.html">⚡ Les Anomalies</a></li>
+                <li><a href="factions.html">🏛️ Les Factions</a></li>
+                <li><a href="index.html">🏠 Accueil</a></li>
+            </ul>
+
+            <h2 style="margin-top: 30px;">Résumé Rapide</h2>
+            <p style="font-size: 0.85rem; color: #8b949e; line-height: 2; font-family: monospace;">
+                🎲 <em>Conflits complexes → 1d20</em><br>
+                ✍️ <em>Scènes calmes → Narration libre</em><br>
+                🚫 <em>Godmod & Metagame interdits</em><br>
+                ⚖️ <em>Litiges bloquants → Ouvrir un ticket</em><br>
+                💀 <em>Mort = Accord obligatoire du joueur</em><br>
+                🕸️ <em>Contrats Grid = Dangers permanents</em>
+            </p>
+
+            <h2 style="margin-top: 30px;">Statut Arbitrage</h2>
+            <p style="font-size: 0.9rem; color: #8b949e; font-family: monospace;">
+                <strong>MJ Disponibles :</strong> Voir salon Discord<br>
+                <strong>Dépôt de plainte :</strong> Salon #arbitrage-ticket<br>
+            </p>
+        </aside>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Projet Veridia — Division Arbitrage de l'A.R.A. Toute violation des protocoles est enregistrée.</p>
+    </footer>
+</body>
+</html>
