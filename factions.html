@@ -16,13 +16,12 @@
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Façade / Partie visible avant clic */
         .faction-accordion summary {
             padding: 20px;
             font-size: 1.4rem;
             font-weight: bold;
             cursor: pointer;
-            list-style: none; /* Cache la flèche par défaut de Windows/Chrome */
+            list-style: none;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -30,7 +29,7 @@
             transition: background-color 0.3s ease;
         }
         
-        /* Flèche moderne personnalisée qui va tourner */
+  
         .faction-accordion summary::after {
             content: '▶';
             font-size: 1rem;
@@ -38,16 +37,16 @@
             color: var(--text-dim);
         }
 
-        /* Comportement quand le volet est OUVERT */
+
         .faction-accordion[open] {
             border-color: var(--accent-blue);
         }
         .faction-accordion[open] summary::after {
-            transform: rotate(90deg); /* La flèche tourne à 90 degrés */
+            transform: rotate(90deg); 
             color: var(--accent-blue);
         }
 
-        /* Contenu masqué qui se dévoile */
+      
         .faction-content {
             padding: 25px;
             border-top: 1px solid var(--border-color);
@@ -59,17 +58,13 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- Identités visuelles uniques pour chaque bloc --- */
-        
-        /* 1. Le Consortium (Style Électrique / Technologique) */
         .consortium-bloc[open] {
             border-color: #58a6ff;
             box-shadow: 0 0 15px rgba(88, 166, 255, 0.15);
         }
         .consortium-bloc summary:hover { background-color: rgba(88, 166, 255, 0.05); }
 
-        /* 2. Les Enfants de Gaïa (Style Organique / Fluide) */
-        .gaia-bloc { border-radius: 12px; } /* Angles plus doux */
+        .gaia-bloc { border-radius: 12px; }
         .gaia-bloc[open] {
             border-color: #2ea043;
             box-shadow: 0 0 15px rgba(46, 160, 67, 0.15);
@@ -77,7 +72,6 @@
         .gaia-bloc summary:hover { background-color: rgba(46, 160, 67, 0.05); }
         .gaia-bloc[open] summary::after { color: #2ea043; }
 
-        /* 3. Le Syndicat (Style Ombre / Tiroir) */
         .syndicat-bloc[open] {
             border-color: #ab7df6;
             box-shadow: 0 0 15px rgba(171, 125, 246, 0.15);
@@ -85,7 +79,6 @@
         .syndicat-bloc summary:hover { background-color: rgba(171, 125, 246, 0.05); }
         .syndicat-bloc[open] summary::after { color: #ab7df6; }
 
-        /* 4. L'A.R.A (Style Institutionnel / Neutre) */
         .ara-bloc[open] {
             border-color: #ffffff;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
@@ -93,7 +86,6 @@
         .ara-bloc summary:hover { background-color: rgba(255, 255, 255, 0.05); }
         .ara-bloc[open] summary::after { color: #ffffff; }
 
-        /* Style des tableaux de statistiques */
         .lore-table {
             width: 100%;
             border-collapse: collapse;
@@ -109,7 +101,6 @@
             background-color: rgba(255, 255, 255, 0.05);
         }
 
-        /* Blocs de code classification */
         .classification-box {
             background-color: #0d1117;
             padding: 15px;
@@ -140,7 +131,6 @@
                 <h2>A.R.A. — DOSSIER DE RENSEIGNEMENT</h2>
                 <p>Cliquez sur l'en-tête d'une organisation pour déployer son dossier d'archive crypté de l'A.R.A.</p>
                 
-                <!-- ================= 🏛️ LE CONSORTIUM ================= -->
                 <details class="faction-accordion consortium-bloc">
                     <summary>🏛️ LE CONSORTIUM</summary>
                     <div class="faction-content">
@@ -219,7 +209,6 @@
                     </div>
                 </details>
 
-                <!-- ================= 🌿 LES ENFANTS DE GAÏA ================= -->
                 <details class="faction-accordion gaia-bloc">
                     <summary>🌿 LES ENFANTS DE GAÏA</summary>
                     <div class="faction-content">
@@ -299,7 +288,6 @@
                     </div>
                 </details>
 
-                <!-- ================= 🎭 LE SYNDICAT ================= -->
                 <details class="faction-accordion syndicat-bloc">
                     <summary>🎭 LE SYNDICAT</summary>
                     <div class="faction-content">
@@ -379,7 +367,6 @@
                     </div>
                 </details>
 
-                <!-- ================= 🛡️ L'A.R.A. ================= -->
                 <details class="faction-accordion ara-bloc">
                     <summary>🛡️ L'A.R.A. (AGENCE DE RÉGULATION)</summary>
                     <div class="faction-content">
